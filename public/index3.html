@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-us">
+        <head>
+                <title>Mongo Scraper - Art News</title>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.0.0/materia/bootstrap.min.css">
+                <link href="https://fonts.googleapis.com/css?family=Cormorant+SC" rel="stylesheet">
+                <link rel="stylesheet" href="./style.css">
+              <style>img.chromoji { width:1.2em !important; height:1.2em !important; }.chromoji-font, #chromoji-font { font-size:1.2em !important; }</style>
+        </head>
+
+<body class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                <a class="navbar-brand" href="/">Mongo Scraper</a>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="/">Home
+                        <span class="sr-only">(current)</span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/saved">Saved Articles</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="btn btn-danger scrape-new" id="scrape">SCRAPE NEW ARTICLES!</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="btn btn-danger clear" id="clear">CLEAR ARTICLES!</a>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+    <h3 class="header"> Frontend</h3>
+    <div id="buttons">
+<!-- sorting buttons -->
+        <button class="btn" id="title-sort">Sort By Headline</button>
+        <button class="btn" id="category-sort">Sort By Category</button>
+    </div>
+    <table id="results">
+        <thead>
+            <tr>
+<!-- sort by these two cols -->
+                <th id="title">Headline</th>
+                <th id="category">Article Category</th>
+<!-- other cols -->
+                <th id="link">Link</th>
+                <th id="time">Time</th>
+                <th id="image">Image Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Results from DB here -->
+        </tbody>
+    </table>
+    <script src="app.js"></script>
+</body>
+
+</html>
