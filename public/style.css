@@ -7,9 +7,15 @@
       width: 100px;
   }
 
-  #articles {
+  #results {
     display: inline-block;
     overflow: auto;
-    width: 90%;
+    width: 95%;
     height: 700px;
+  }
+
+  #articles {
+    width: 100%;
+    margin: 10px 10px;
+    
   }

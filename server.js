@@ -23,9 +23,9 @@ app.set("view engine", "handlebars");
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static(__dirname + "/public"));
-  // index route loads view.html
-  app.get("/", function (req, res) {
-    res.render('index');
+// index route loads view.html
+app.get("/", function (req, res) {
+  res.render('index');
 });
 
 // Parse application body as JSON
@@ -48,19 +48,21 @@ connection.once('open', function callback() {
 // Scrape data from one site and place it into the mongodb db
 app.get("/scrape", function (req, res) {
   // Make a request via axios for the news section of `ycombinator`
-  axios.get("https://news.artnet.com/art-world").then(function (response) {
+  axios.get("https://news.artnet.com").then(function (response) {
     // Load the html body from axios into cheerio
     var $ = cheerio.load(response.data);
 
-    // if (response.ObjectId) {
-    $(".teaser-info").each(function (i, element) {
-      // Save an empty result object
-      var result = {};
+    // Save an empty result object
+    var result = {};
+
+    $(".teaser").each(function (i, element) {
 
       // Add the text and href of every link, and save them as properties of the result object
-      result.time = $(this).children(".teaser-blurb").text(); //teaser-blurb
-      result.title = $(this).children("a").text();
+      result.title = $(this).find("h2").text();
       result.link = $(this).children("a").attr("href");
+      result.image = $(this).find("img").attr("src");
+      result.category = $(this).find("h5").text();
+      result.time = $(this).find("time").text(); 
 
       // Create a new Article using the `result` object built from scraping
       db.Article.create(result)
@@ -74,13 +76,24 @@ app.get("/scrape", function (req, res) {
         });
     });
   });
+
   res.send("Scrape Complete");
-  // res.redirect("/");
+});
+
+// Route for sorting articles by title
+app.get("/title", function (req, res) {
+  // Grab every document in the Articles collection
+  db.Article.find().sort({ title: 1 })
+    .then(function (dbArticle) {
+      res.json(dbArticle);
+    })
+    .catch(function (err) {
+      res.json(err);
+    });
 });
 
 // Route for getting all Articles from the db
-app.get("/all", function (req, res) {
-  // Grab every document in the Articles collection
+app.get("/articles", function (req, res) {
   db.Article.find({})
     .then(function (dbArticle) {
       res.json(dbArticle);

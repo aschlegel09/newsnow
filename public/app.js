@@ -1,9 +1,7 @@
-// We'll be rewriting the table's data frequently, so let's make our code more DRY
-// by writing a function that takes in 'art' (JSON) and creates a table body
 $(function () {
     function displayResults(artTitles) {
         // First, empty the table
-        $("tbody").empty();
+        $("#articles").empty();
 
         // Then, for each entry of that json...
         artTitles.forEach(function (art) {
@@ -16,7 +14,7 @@ $(function () {
                 $("<td>").text(art.image)
             );
 
-            $("tbody").append(tr);
+            $("#articles").append(tr);
         });
     }
 
@@ -35,9 +33,9 @@ $(function () {
     // ==========
 
     // First thing: ask the back end for json with all artTitles
-    $.getJSON("/all", function (data) {
+    $.getJSON("/articles", function (data) {
         // Call our function to generate a table body
-        // displayResults(data);
+        displayResults(data);
         // Display the apropos information on the page
         $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
     },
