@@ -36,7 +36,10 @@ function setWidth(selector) {
 // First thing: ask the back end for json with all artTitles
 $.getJSON("/all", function (data) {
     // Call our function to generate a table body
-    displayResults(data);
+    // displayResults(data);
+       // Display the apropos information on the page
+       $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
+    }
 });
 
 // 2: Button Interactions

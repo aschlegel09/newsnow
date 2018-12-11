@@ -6,3 +6,10 @@
   .td-width {
       width: 100px;
   }
+
+  #articles {
+    display: inline-block;
+    overflow: auto;
+    width: 90%;
+    height: 700px;
+  }
