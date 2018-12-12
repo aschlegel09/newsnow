@@ -25,11 +25,7 @@
     </div>
   </nav>
 
-  <div class="jumbotron text-center">
-    <div class="overlay">
-    </div>
-    <div class="background-image">
-    </div>
+  <div class="jumbotron text-center top">
     <div class="caption">
       <h1>Mongo Scraper</h1>
       <p>ArtNet News Edition</p>
@@ -39,8 +35,10 @@
       <!-- sorting buttons -->
               <button class="btn" id="title-sort">Sort By Headline</button>
               <button class="btn" id="category-sort">Sort By Category</button>
+              {{!-- need to convert all to hours --}}
+              <button class="btn" id="time-sort">Sort By time</button>
           </div>
-          <table id="results">
+          <table class="table table-striped" id="results">
               <thead>
                   <tr>
       <!-- sort by these two cols -->
@@ -48,7 +46,7 @@
                       <th id="category">Article Category</th>
       <!-- other cols -->
                       <th id="link">Link</th>
-                      <th id="time">Time</th>
+                      <th id="time">Time Created</th>
                       <th id="image">Image Link</th>
                   </tr>
               </thead>

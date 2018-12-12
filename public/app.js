@@ -68,6 +68,18 @@ $(function () {
             });
         }),
 
+        // When user clicks the title sort button, display the table sorted by title
+        $("#time-sort").on("click", function () {
+            // Set new column as currently-sorted (active)
+            setActive("#time");
+
+            // Do an api call to the back end for json with all artTitles sorted by title
+            $.getJSON("/time", function (data) {
+                // Call our function to generate a table body
+                displayResults(data);
+            });
+        }),
+
         //   scrape buttons
         // clear the body of articles
         $("#clear").on("click", function () {

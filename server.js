@@ -92,6 +92,30 @@ app.get("/title", function (req, res) {
     });
 });
 
+// Route for sorting articles by category
+app.get("/category", function (req, res) {
+  // Grab every document in the Articles collection
+  db.Article.find().sort({ category: 1 })
+    .then(function (dbArticle) {
+      res.json(dbArticle);
+    })
+    .catch(function (err) {
+      res.json(err);
+    });
+});
+
+// Route for sorting articles by time
+app.get("/time", function (req, res) {
+  // Grab every document in the Articles collection
+  db.Article.find().sort({ time: 1 })
+    .then(function (dbArticle) {
+      res.json(dbArticle);
+    })
+    .catch(function (err) {
+      res.json(err);
+    });
+});
+
 // Route for getting all Articles from the db
 app.get("/articles", function (req, res) {
   db.Article.find({})
