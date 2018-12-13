@@ -15,10 +15,10 @@
         <li class="nav-item">
           <a class="nav-link" href="/saved">Saved Articles</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item saveBtns">
           <a class="btn btn-danger scrape-new" id="scrape">SCRAPE NEW ARTICLES!</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item saveBtns">
           <a class="btn btn-danger clear" id="clear">CLEAR ARTICLES!</a>
         </li>
       </ul>
@@ -31,19 +31,23 @@
       <p>ArtNet News Edition</p>
     </div>
   </div>
+  <div id="notes"></div>
   <div id="buttons">
       <!-- sorting buttons -->
               <button class="btn" id="title-sort">Sort By Headline</button>
               <button class="btn" id="category-sort">Sort By Category</button>
-              {{!-- need to convert all to hours --}}
-              <button class="btn" id="time-sort">Sort By time</button>
+              {{!-- need to convert all formats to hours --}}
+              {{!-- <button class="btn" id="time-sort">Sort By time</button> --}}
           </div>
-          <table class="table table-striped" id="results">
+          <table class="table table-striped table-fixed" id="results">
               <thead>
                   <tr>
       <!-- sort by these two cols -->
+                      {{!-- <th id="data-id">ID</th> --}}
+                      <th id="articleBtn"></th>
                       <th id="title">Headline</th>
-                      <th id="category">Article Category</th>
+                      <th id="summary">Summary</th>
+                      <th id="category">Category</th>
       <!-- other cols -->
                       <th id="link">Link</th>
                       <th id="time">Time Created</th>

@@ -1,15 +1,33 @@
 .top {
   background-image: url("./images/earth-eye.png");
-  background-position: middle;
-  width: 100% cover contain;
   background-repeat: no-repeat;
-  background-size: 95%;
+  background-attachment: fixed;
+  background-position: center top; 
+  width: 100% cover contain;
+  background-size: 98%;
   height: 400px;
-  float: center;
+  float: center top;
   color: white;
+  top: 0;
+  margin-top: 0px;
+  position: relative;
 }
 
+.caption {
+  font-size: 1.5em;
+  font-weight: bolder;
+  color: gold;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+ 
+  /* background-color: gray;
+  opacity: .7;
+  padding: 10px 10px; */
+}
 
+.caption:hover {
+  text-decoration: underline; 
+  font-style: italic;
+}
 
 .active {
     color: #ee6e73;
@@ -33,10 +51,88 @@
 
   }
 
-  th {
-    width: 20%;
+td {
+  padding: 0px 0px;
+}
+
+  tr {
+    height: 100px;
   }
 
-  #title {
-    width: 50%;
+  #title-sort {
+    margin: 10px 10px 10px 25px;
+    background-color: navy;
+    color: white;
   }
+
+
+
+  #notes {
+    padding-top: 15px;
+    padding-left: 5px;
+    float: right;
+    position: relative;
+    width: 35%;
+    border: 1px solid navy;
+    margin-right: 7%;
+  }
+
+  .table-fixed{
+    width: 100%;
+    /* background-color: #f3f3f3; */
+  }
+
+tbody{
+      height:200px;
+      overflow-y:auto;
+      width: 100%;
+      }
+
+.saveBtns {
+        float: left;
+        position: relative;
+        right: 0;
+        color: white;
+        margin-right: 0px;
+      
+      }
+
+      #titleinput {
+        margin-left: 10%;
+        border: 1px solid gray;
+      }
+
+      #bodyinput {
+        margin-left: 10%;
+        border: 1px solid gray;
+      }
+
+      #title-sort:hover{ 
+        background-color: white;
+      color: navy;
+      }
+
+      #category-sort {
+        margin: 10px 10px;
+        background-color: navy;
+        color: white;
+      }
+
+      #category-sort:hover {
+        background-color: white;
+      color: navy;
+      }
+
+      #savenote {
+        background-color: navy;
+        border: 1px solid white;
+        color: white;
+        border-radius: 10px;
+      margin-left: 10px;
+      padding: 10px 10px;
+      }
+
+    #savenote:hover {
+      background-color: white;
+      color: navy;
+    }
