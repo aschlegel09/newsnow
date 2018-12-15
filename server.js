@@ -80,35 +80,33 @@ app.get("/scrape", function (req, res) {
         .catch(function (err) {
           // If an error occurred, send it to the client
           return res.json(err);
-        }), 
-        db.Article.aggregate([
-          {
-            "$group": {
-              _id: { title: "$title" },
-              dups: { $addToSet: "$_id" },
-              count: { $sum: 1 }
-            }
-          },
-          { 
-            $match: 
-            { 
-              count: { "$gt": 1 } 
-            } 
-          }
-        ]).forEach(function (doc) {
-          doc.dups.shift();
-          db.Article.remove({ 
-            _id: { $in: doc.dups } 
-          });
-        }).catch(function (err) {
-          // If an error occurred, send it to the client
-          return res.json(err);
-        });
-
-
-        res.send("Scrape Complete");
-        
+        })
+      // db.Article.aggregate([
+      //   {
+      //     "$group": {
+      //       _id: { title: "$title" },
+      //       dups: { $addToSet: "$_id" },
+      //       count: { $sum: 1 }
+      //     }
+      //   },
+      //   { 
+      //     $match: 
+      //     { 
+      //       count: { "$gt": 1 } 
+      //     } 
+      //   }
+      // ]).forEach(function (doc) {
+      //   doc.dups.shift();
+      //   db.Article.remove({ 
+      //     _id: { $in: doc.dups } 
+      //   });
+      // }).catch(function (err) {
+      //   // If an error occurred, send it to the client
+      //   return res.json(err);
+      // });
     });
+
+    res.send("Scrape Complete");
   });
 
 });
@@ -192,16 +190,16 @@ app.post("/articles/:id", function (req, res) {
 });
 
 // Route to get all articles and populate them with their notes
-app.get("/notes", function(req, res) {
+app.get("/notes", function (req, res) {
   // Find all articles
   db.Article.find({})
     // Specify that we want to populate the retrieved articles with any associated notes
     .populate("note")
-    .then(function(dbArticle) {
+    .then(function (dbArticle) {
       // If able to successfully find and associate all articles and Notes, send them back to the client
       res.json(dbArticle);
     })
-    .catch(function(err) {
+    .catch(function (err) {
       // If an error occurs, send it back to the client
       res.json(err);
     });
@@ -211,3 +209,4 @@ app.get("/notes", function(req, res) {
 app.listen(PORT, function () {
   console.log("App running on port " + PORT + "!");
 });
+

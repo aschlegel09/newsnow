@@ -12,6 +12,7 @@ $(function () {
         artTitles.forEach(function (art) {
             // Append each of the art piece's properties to the table
             var tr = $("<tr>").append(
+                $("<td>").button(),
                 $("<td>").text(art.title),
                 $("<td>").text(art.summary),
                 $("<td>").text(art.category),
